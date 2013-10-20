@@ -1,0 +1,267 @@
+﻿<Contest Updated="2013-09-27T17:26:32" Declared="2013-09-18T00:00:00">
+            <eml:ContestIdentifier Id="151">
+              <eml:ContestName>Warringah</eml:ContestName>
+            </eml:ContestIdentifier>
+            <PollingDistrictIdentifier Id="151" ShortCode="WARR">
+              <Name>Warringah</Name>
+              <StateIdentifier Id="NSW" />
+            </PollingDistrictIdentifier>
+            <Enrolment CloseOfRolls="102600" Historic="96708">102574</Enrolment>
+            <FirstPreferences Updated="2013-09-27T17:26:32" PollingPlacesReturned="50" PollingPlacesExpected="50">
+              <Candidate>
+                <eml:CandidateIdentifier Id="24564">
+                  <eml:CandidateName>ZANETTI, Jules Felix</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="194" ShortCode="ALP">
+                  <eml:RegisteredName>Labor</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>1</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="18385" Percentage="19.32" Swing="-2.32" MatchedHistoric="15776">17259</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="15780" Percentage="19.31" Swing="-2.52">14410</Votes>
+                  <Votes Type="Absent" Historic="1147" Percentage="20.79" Swing="-0.67">884</Votes>
+                  <Votes Type="Provisional" Historic="51" Percentage="16.74" Swing="-3.18">39</Votes>
+                  <Votes Type="PrePoll" Historic="671" Percentage="21.65" Swing="-1.43">738</Votes>
+                  <Votes Type="Postal" Historic="737" Percentage="17.43" Swing="-0.2">1188</Votes>
+                </VotesByType>
+              </Candidate>
+              <Candidate>
+                <eml:CandidateIdentifier Id="24183">
+                  <eml:CandidateName>STEWART, Brodie Martin O'Connor</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="1382" ShortCode="PUP">
+                  <eml:RegisteredName>Palmer United Party</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>2</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="0" Percentage="2.2" Swing="2.2" MatchedHistoric="0">1961</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="0" Percentage="2.17" Swing="2.17">1622</Votes>
+                  <Votes Type="Absent" Historic="0" Percentage="3.03" Swing="3.03">129</Votes>
+                  <Votes Type="Provisional" Historic="0" Percentage="2.15" Swing="2.15">5</Votes>
+                  <Votes Type="PrePoll" Historic="0" Percentage="2.23" Swing="2.23">76</Votes>
+                  <Votes Type="Postal" Historic="0" Percentage="1.89" Swing="1.89">129</Votes>
+                </VotesByType>
+              </Candidate>
+              <Candidate>
+                <eml:CandidateIdentifier Id="24580">
+                  <eml:CandidateName>BLOOMFIELD, Mike</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="1348" ShortCode="RUA">
+                  <eml:RegisteredName>Rise Up Australia Party</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>3</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="0" Percentage="0.53" Swing="0.53" MatchedHistoric="0">472</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="0" Percentage="0.52" Swing="0.52">387</Votes>
+                  <Votes Type="Absent" Historic="0" Percentage="0.85" Swing="0.85">36</Votes>
+                  <Votes Type="Provisional" Historic="0" Percentage="0.86" Swing="0.86">2</Votes>
+                  <Votes Type="PrePoll" Historic="0" Percentage="0.56" Swing="0.56">19</Votes>
+                  <Votes Type="Postal" Historic="0" Percentage="0.41" Swing="0.41">28</Votes>
+                </VotesByType>
+              </Candidate>
+              <Candidate>
+                <eml:CandidateIdentifier Id="23602">
+                  <eml:CandidateName>KITCHING, Will</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="37" ShortCode="GRN">
+                  <eml:RegisteredName>The Greens</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>4</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="13883" Percentage="15.53" Swing="-0.81" MatchedHistoric="11596">13873</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="11600" Percentage="15.58" Swing="-0.47">11626</Votes>
+                  <Votes Type="Absent" Historic="1115" Percentage="18.09" Swing="-2.77">769</Votes>
+                  <Votes Type="Provisional" Historic="44" Percentage="16.74" Swing="-0.45">39</Votes>
+                  <Votes Type="PrePoll" Historic="576" Percentage="17.84" Swing="-1.98">608</Votes>
+                  <Votes Type="Postal" Historic="548" Percentage="12.19" Swing="-0.92">831</Votes>
+                </VotesByType>
+              </Candidate>
+              <Candidate>
+                <eml:CandidateIdentifier Id="24585">
+                  <eml:CandidateName>FALANGA, Ula</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="1184" ShortCode="CDP">
+                  <eml:RegisteredName>Christian Democratic Party (Fred Nile Group)</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>5</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="0" Percentage="0.71" Swing="0.71" MatchedHistoric="0">630</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="0" Percentage="0.69" Swing="0.69">514</Votes>
+                  <Votes Type="Absent" Historic="0" Percentage="0.89" Swing="0.89">38</Votes>
+                  <Votes Type="Provisional" Historic="0" Percentage="0.86" Swing="0.86">2</Votes>
+                  <Votes Type="PrePoll" Historic="0" Percentage="0.76" Swing="0.76">26</Votes>
+                  <Votes Type="Postal" Historic="0" Percentage="0.73" Swing="0.73">50</Votes>
+                </VotesByType>
+              </Candidate>
+              <Candidate>
+                <eml:CandidateIdentifier Id="23210">
+                  <eml:CandidateName>ABBOTT, Tony</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="188" ShortCode="LP">
+                  <eml:RegisteredName>Liberal</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>6</BallotPosition>
+                <Elected Historic="true">true</Elected>
+                <Incumbent Notional="true">true</Incumbent>
+                <Votes Historic="50063" Percentage="60.89" Swing="1.97" MatchedHistoric="42736">54388</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="42741" Percentage="60.9" Swing="1.77">45446</Votes>
+                  <Votes Type="Absent" Historic="2814" Percentage="55.48" Swing="2.82">2359</Votes>
+                  <Votes Type="Provisional" Historic="153" Percentage="62.23" Swing="2.46">145</Votes>
+                  <Votes Type="PrePoll" Historic="1570" Percentage="56.41" Swing="2.37">1923</Votes>
+                  <Votes Type="Postal" Historic="2785" Percentage="66.25" Swing="-0.38">4515</Votes>
+                </VotesByType>
+              </Candidate>
+              <Candidate>
+                <eml:CandidateIdentifier Id="23209">
+                  <eml:CandidateName>COTTEE, Mike</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="1336" ShortCode="SPP">
+                  <eml:RegisteredName>Stable Population Party</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>7</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="0" Percentage="0.83" Swing="0.83" MatchedHistoric="0">744</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="0" Percentage="0.82" Swing="0.82">613</Votes>
+                  <Votes Type="Absent" Historic="0" Percentage="0.87" Swing="0.87">37</Votes>
+                  <Votes Type="Provisional" Historic="0" Percentage="0.43" Swing="0.43">1</Votes>
+                  <Votes Type="PrePoll" Historic="0" Percentage="0.56" Swing="0.56">19</Votes>
+                  <Votes Type="Postal" Historic="0" Percentage="1.09" Swing="1.09">74</Votes>
+                </VotesByType>
+              </Candidate>
+              <Ghost>
+                <eml:CandidateIdentifier Id="21243">
+                  <eml:CandidateName>GUTMAN, Alexander Jacob</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="1324" ShortCode="ASXP">
+                  <eml:RegisteredName>Australian Sex Party</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>901</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="2075" Percentage="0" Swing="-2.44" MatchedHistoric="1676">0</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="1679" Percentage="0" Swing="-2.32">0</Votes>
+                  <Votes Type="Absent" Historic="233" Percentage="0" Swing="-4.36">0</Votes>
+                  <Votes Type="Provisional" Historic="6" Percentage="0" Swing="-2.34">0</Votes>
+                  <Votes Type="PrePoll" Historic="80" Percentage="0" Swing="-2.74">0</Votes>
+                  <Votes Type="Postal" Historic="77" Percentage="0" Swing="-1.84">0</Votes>
+                </VotesByType>
+              </Ghost>
+              <Ghost>
+                <eml:CandidateIdentifier Id="21601">
+                  <eml:CandidateName>COOKE, Kenneth</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="1327" ShortCode="SPA">
+                  <eml:RegisteredName>Secular Party of Australia</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>905</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="566" Percentage="0" Swing="-0.67" MatchedHistoric="482">0</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="486" Percentage="0" Swing="-0.67">0</Votes>
+                  <Votes Type="Absent" Historic="36" Percentage="0" Swing="-0.67">0</Votes>
+                  <Votes Type="Provisional" Historic="2" Percentage="0" Swing="-0.78">0</Votes>
+                  <Votes Type="PrePoll" Historic="9" Percentage="0" Swing="-0.32">0</Votes>
+                  <Votes Type="Postal" Historic="33" Percentage="0" Swing="-0.79">0</Votes>
+                </VotesByType>
+              </Ghost>
+              <Formal>
+                <Votes Historic="84972" Percentage="94.62" Swing="-0.74" MatchedHistoric="72266">89327</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="72286" Percentage="94.42" Swing="-0.87">74618</Votes>
+                  <Votes Type="Absent" Historic="5344" Percentage="94.36" Swing="0.39">4252</Votes>
+                  <Votes Type="Provisional" Historic="256" Percentage="96.68" Swing="3.25">233</Votes>
+                  <Votes Type="PrePoll" Historic="2906" Percentage="95.92" Swing="-0.56">3409</Votes>
+                  <Votes Type="Postal" Historic="4180" Percentage="96.35" Swing="-1.43">6815</Votes>
+                </VotesByType>
+              </Formal>
+              <Informal>
+                <Votes Historic="4135" Percentage="5.38" Swing="0.74" MatchedHistoric="3569">5078</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="3573" Percentage="5.58" Swing="0.87">4413</Votes>
+                  <Votes Type="Absent" Historic="343" Percentage="5.64" Swing="-0.39">254</Votes>
+                  <Votes Type="Provisional" Historic="18" Percentage="3.32" Swing="-3.25">8</Votes>
+                  <Votes Type="PrePoll" Historic="106" Percentage="4.08" Swing="0.56">145</Votes>
+                  <Votes Type="Postal" Historic="95" Percentage="3.65" Swing="1.43">258</Votes>
+                </VotesByType>
+              </Informal>
+              <Total>
+                <Votes Historic="89107" Percentage="92.04" Swing="-0.1" MatchedHistoric="75835">94405</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="75859" Percentage="83.71" Swing="-1.39">79031</Votes>
+                  <Votes Type="Absent" Historic="5687" Percentage="4.77" Swing="-1.49">4506</Votes>
+                  <Votes Type="Provisional" Historic="274" Percentage="0.26" Swing="-0.05">241</Votes>
+                  <Votes Type="PrePoll" Historic="3012" Percentage="3.76" Swing="0.35">3554</Votes>
+                  <Votes Type="Postal" Historic="4275" Percentage="7.49" Swing="2.48">7073</Votes>
+                </VotesByType>
+              </Total>
+            </FirstPreferences>
+            <TwoCandidatePreferred Updated="2013-09-27T17:26:32" PollingPlacesReturned="50" PollingPlacesExpected="50">
+              <Candidate>
+                <eml:CandidateIdentifier Id="24564">
+                  <eml:CandidateName>ZANETTI, Jules Felix</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="194" ShortCode="ALP">
+                  <eml:RegisteredName>Labor</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>1</BallotPosition>
+                <Elected Historic="false">false</Elected>
+                <Incumbent Notional="false">false</Incumbent>
+                <Votes Historic="31360" Percentage="34.65" Swing="-2.26" MatchedHistoric="26592" MatchedHistoricFirstPrefsIn="26592">30953</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="26592" Percentage="34.75" Swing="-2.04">25933</Votes>
+                  <Votes Type="Absent" Historic="2239" Percentage="38.15" Swing="38.15">1622</Votes>
+                  <Votes Type="Provisional" Historic="88" Percentage="31.33" Swing="31.33">73</Votes>
+                  <Votes Type="PrePoll" Historic="1202" Percentage="38.57" Swing="38.57">1315</Votes>
+                  <Votes Type="Postal" Historic="1240" Percentage="29.49" Swing="29.49">2010</Votes>
+                </VotesByType>
+              </Candidate>
+              <Candidate>
+                <eml:CandidateIdentifier Id="23210">
+                  <eml:CandidateName>ABBOTT, Tony</eml:CandidateName>
+                </eml:CandidateIdentifier>
+                <eml:AffiliationIdentifier Id="188" ShortCode="LP">
+                  <eml:RegisteredName>Liberal</eml:RegisteredName>
+                </eml:AffiliationIdentifier>
+                <BallotPosition>6</BallotPosition>
+                <Elected Historic="true">true</Elected>
+                <Incumbent Notional="true">true</Incumbent>
+                <Votes Historic="53612" Percentage="65.35" Swing="2.26" MatchedHistoric="45694" MatchedHistoricFirstPrefsIn="45694">58374</Votes>
+                <VotesByType>
+                  <Votes Type="Ordinary" Historic="45695" Percentage="65.25" Swing="2.04">48685</Votes>
+                  <Votes Type="Absent" Historic="3105" Percentage="61.85" Swing="61.85">2630</Votes>
+                  <Votes Type="Provisional" Historic="168" Percentage="68.67" Swing="68.67">160</Votes>
+                  <Votes Type="PrePoll" Historic="1704" Percentage="61.43" Swing="61.43">2094</Votes>
+                  <Votes Type="Postal" Historic="2940" Percentage="70.51" Swing="70.51">4805</Votes>
+                </VotesByType>
+              </Candidate>
+            </TwoCandidatePreferred>
+            <TwoPartyPreferred>
+              <Coalition>
+                <CoalitionIdentifier Id="1" ShortCode="ALP">
+                  <CoalitionName>Australian Labor Party</CoalitionName>
+                </CoalitionIdentifier>
+                <Votes Historic="31360" Percentage="34.65" Swing="-2.26" MatchedHistoric="30953">30953</Votes>
+              </Coalition>
+              <Coalition>
+                <CoalitionIdentifier Id="2" ShortCode="LNC">
+                  <CoalitionName>Liberal/National Coalition</CoalitionName>
+                </CoalitionIdentifier>
+                <Votes Historic="53612" Percentage="65.35" Swing="2.26" MatchedHistoric="58374">58374</Votes>
+              </Coalition>
+            </TwoPartyPreferred>
+          </Contest>

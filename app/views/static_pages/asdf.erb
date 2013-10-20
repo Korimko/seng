@@ -1,0 +1,135 @@
+
+<meta charset="utf-8">
+<style>
+.place,
+.place-label {
+  fill: #444;
+}
+
+path {
+  stroke: white;
+  stroke-width: 0.25px;
+  fill: #cdc;
+}
+
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3px;
+  pointer-events: none;
+}
+
+</style>
+
+<head>
+  <script type="text/javascript" src="/assets/application.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v0.min.js"></script>
+  
+</head>
+
+    
+
+<div class="center hero-unit" id="viz"></div>
+<div class="center hero-unit">
+	<!-- <p id="demo">Pls dont press dat button</p>
+	 <button class="btn btn-large btn-primary" onclick="myFunction()">Click on me</button> -->
+
+	<!-- <%= link_to image_tag("Australia.jpg", alt: "Australia"), 'http://reddit.com/r/leagueoflegends/' %> -->
+  <div class="center hero-unit" id="map"></div>
+
+</div>
+
+<!--<%= link_to image_tag("derp-photo.jpg", alt: "Rails", width: "100", height: "100"), 'http://reddit.com/r/leagueoflegends/' %> -->
+
+<script>
+function myFunction()
+{
+document.getElementById("demo").innerHTML="i die";
+}
+</script>
+
+<script type="text/javascript">
+        var jsonRectangles = [
+   { "x_axis": 0, "y_axis": 0, "height": 50, "width":500, "color" : "#428bca" },
+   { "x_axis": 500, "y_axis": 0, "height": 50, "width":300, "color" : "#E95D4E" }];
+
+ 
+ var svgContainer = d3.select("#viz").append("svg")
+                                     .attr("width", 800)
+                                     .attr("height", 40);
+ 
+var rectangles = svgContainer.selectAll("rect")
+                             .data(jsonRectangles)
+                             .enter()
+                             .append("rect");
+
+var rectangleAttributes = rectangles
+                          .attr("x", function (d) { return d.x_axis; })
+                          .attr("y", function (d) { return d.y_axis; })
+                          .attr("height", function (d) { return d.height; })
+                          .attr("width", function (d) { return d.width; })
+                          .style("fill", function(d) { return d.color; });
+</script>
+
+<script>
+
+var width = 869,
+    height =940;
+
+var projection = d3.geo.mercator()
+  .center([133,-29])
+  .scale(1000)
+  .translate([width / 2, height / 2])
+  .precision(.1);
+
+var path = d3.geo.path()
+  .projection(projection)
+  //.pointRadius(2);
+
+var svg = d3.select("#map").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var g = svg.append("g");
+
+d3.json("assets/aus.json", function(error, aus) {
+    g.selectAll("path")
+    .data(topojson.object(aus, aus.objects.subunits).geometries)
+    .enter()
+    .append("path")
+    .attr("class", function(d) { return "subunit " + d.id; })
+    .attr("d", path);
+
+    /*
+  g.selectAll(".place")
+    .data(topojson.object(aus, aus.objects.places).geometries)
+  .enter().append("circle")
+    .attr("d", path)
+    .attr("transform", function(d) { return "translate(" + projection(d.coordinates) + ")"; })
+    .attr("r", 0.5)
+    .attr("class", "place");
+
+  g.selectAll(".place-label")
+      .data(topojson.object(aus, aus.objects.places).geometries)
+    .enter().append("text")
+      .attr("class", "place-label")
+      .attr("transform", function(d) { return "translate(" + projection(d.coordinates) + ")"; })
+      .attr("x", function(d) { return d.coordinates[0] > 135 ? 6 : -6; })
+      .attr("dy", ".35em")
+      .style("text-anchor", function(d) { return d.coordinates[0] > 135 ? "start" : "end"; })
+      .text(function(d) { return d.properties.name; });
+  */
+});
+
+var zoom = d3.behavior.zoom()
+    .on("zoom",function() {
+        g.attr("transform","translate("+ 
+            d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+        g.selectAll("path")  
+            .attr("d", path.projection(projection)); 
+  });
+
+svg.call(zoom)
+
+
+</script>

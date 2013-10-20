@@ -1,0 +1,21 @@
+<h1>Listing aec_data</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @aec_data.each do |aec_datum| %>
+  <tr>
+    <td><%= link_to 'Show', aec_datum %></td>
+    <td><%= link_to 'Edit', edit_aec_datum_path(aec_datum) %></td>
+    <td><%= link_to 'Destroy', aec_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Aec datum', new_aec_datum_path %>

@@ -1,0 +1,497 @@
+
+<meta charset="utf-8">
+<style>
+.place,
+.place-label {
+  fill: #444;
+}
+
+path {
+  stroke: black;
+  stroke-width: 0.25px;
+  fill: #cdc;
+}
+
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3px;
+  pointer-events: none;
+}
+
+#mapPopup {
+  font-size: 18px;
+  
+  
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: #4867D6;
+  box-shadow: 5px 5px 10px 0px;
+  padding: 10px;
+  background-color: #FFC000;
+  
+  width: 550px;
+  z-index:1;
+  
+  
+  display: none;
+}
+
+#mapPopup h1 {
+  font-family: "Tahoma";
+  font-size: 150%;
+}
+
+#mapPopup p {
+  font-family: "Palatino Linotype";
+  font-size: 100%;
+}
+
+#barPopup {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: white;
+  box-shadow: 5px 5px 10px 0px;
+  padding: 10px;
+  
+  width:30%;
+  z-index:1;
+  
+  display: none;
+}
+
+#barPopup h1 {
+  font-family: "Tahoma";
+  font-size: 100%;
+}
+
+#barPopup p {
+  font-family: "Palatino Linotype";
+  font-size: 100%;
+}
+
+#optionList {
+  display: block;
+  float: left;
+}
+
+#optionList li {
+  background-color: #009B95;
+  display: block;
+  float: left;
+  list-style: none;
+  display: inline;
+  list-style-type: none;
+  padding: 3px;
+  margin: 0px;
+  border-width: 1px;
+  border-style: solid;
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+#optionList li:hover {
+  background-color: #00B358;
+}
+
+hr {
+  border-color: #000000;
+}
+
+#graphPopup {
+  padding: 25px;
+}
+
+#exit {
+  position:absolute;
+  left:220px;
+  bottom:-20px;
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+
+</style>
+
+<head>
+  <script type="text/javascript" src="/assets/application.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v0.min.js"></script>
+  <script type="text/javascript" src="/assets/mapPopup.js"></script>
+  <script type="text/javascript" src="/assets/parties.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  <script type="text/javascript" src="http:////netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+  
+</head>
+<div style="position:relative;" class="center hero-unit" id="viz">
+  <h3>Current House of Representatives Seat Count</h3>
+  <!--Information Bar popup div- we only need one as only one is present at a time-->
+  <div id="barPopup">
+    <h1>Insert Party Name Here</h1>
+    <p>Insert Information Here</p>
+  </div>
+  <!--End popup-->
+</div>
+
+<div class="center hero-unit">
+
+	<!-- <%= link_to image_tag("Australia.jpg", alt: "Australia"), 'http://reddit.com/r/leagueoflegends/' %> -->
+  <div style="position:relative;" class="center hero-unit" id="map">
+    <form>
+      <label><input type="radio" name="votes" value="Current" checked> This Election</label>
+      <label><input type="radio" name="votes" value="Past"> Last Election</label>
+    </form>
+    <!--Map information popup div- we only need one as only one is present at a time-->
+    <div id="mapPopup">
+      <div class="btn-group">
+       <button type ="button" class="btn btn-danger"onclick='closePopup("#mapPopup")' id="exit">X</button>
+     </div>
+      <h1 class="popupHeading">Insert Electorate Name Here</h1>
+      <hr/>
+        <div class="btn-group" id="optionList" style="margin-left: 6px">
+            <button type ="button" class="btn btn-info" onclick="popupSelect(1)">Two Party Candidates</button>
+            <button type ="button" class="btn btn-info" onclick="popupSelect(2)">All Candidates</button>
+            <button type ="button" class="btn btn-info" onclick="popupSelect(3);currentGraphView();">Voting Graph</button>
+            <button type ="button" class="btn btn-info" onclick="popupSelect(4);historicGraphView();">Historical Graph</button>
+        </div>
+      <br/>
+      <br/>
+      <div id="mapPopupPage1">
+        <h2 id="subHeading"></h2>
+        <h2 id="field1Title"></h2>
+        <p id="field1"></p>
+        <h2 id="field2Title"></h2>
+        <p id="field2"></p>
+      </div>
+      <div id="mapPopupPage2" style="display:none;"></div>
+      <div id="mapPopupPage3" style="display:none;">
+        <p id="infoBox" style="width:100%;"></p>
+        <svg id="graphPopup" style="width: 550px; height: 500px;"></svg>
+      </div>
+    </div>
+    <!--End popup-->
+  </div>
+
+</div>
+
+
+<!--Voting bar starts here!-->
+<script type="text/javascript">
+  var NUMBER_SEATS = 150;
+  var partyBar = [
+    {
+      "name" : "Coalition",
+      "count" : <%= @liberalCount %>,
+    },
+    {
+      "name" : "Other Parties",
+      "count" : <%= @otherCount %>,
+    },
+    {
+      "name" : "Labor",
+      "count" : <%= @laborCount %>,
+    }
+  ];
+  
+  console.log("And the liberal count is " + partyBar[0].count);
+  console.log("And the labor count is " + partyBar[2].count);
+  console.log("And the other count is " + partyBar[1].count);
+   
+	var svgWidth = 800;
+	var svgHeight = 40;
+
+	var widthScale = d3.scale.linear()
+					.domain([0,NUMBER_SEATS])
+					.range([0,svgWidth]);
+ 
+	var svg = d3.select("#viz").append("svg")
+                .attr("width", svgWidth)
+                .attr("height", svgHeight);
+ 
+	var rectangles = svg.selectAll("rect")
+                .data(partyBar)
+                .enter()
+                .append("rect")
+                .style("position","absolute")
+                .attr("x", function (d, i) {
+                  var output = 0;
+                  for (var j = 0; j < i; j++) {
+                    output += widthScale(partyBar[j].count);
+                  }
+                  return output;
+                })
+                .attr("y", 0)
+                .attr("height", svgHeight)
+                .attr("width", function (d) { return widthScale(d.count); })
+                .style("fill", function(d) { return getPartyAffiliationColor(d.name); })
+                .on("mouseover",function(d) {
+                  var currentLeft = this.getAttribute("x");
+                  var currentRight = Number(this.getAttribute("x")) + Number(this.getAttribute("width"));
+                  updatePopupPosition("#barPopup",(Number(currentLeft) + Number(currentRight)) / 2,Number(this.getAttribute("y")) + Number(this.getAttribute("height")) + 65);
+                  openPopup("#barPopup");
+                  d3.select("#barPopup")
+                  .select("h1")
+                  .text(d.name);
+                  d3.select("#barPopup")
+                  .select("p")
+                  .text(d.count + " seats");
+                })
+                .on("mouseout",function(d) {
+                  closePopup("#barPopup");
+                });
+</script>
+<!--Voting bar ends here!-->
+
+<script>
+
+var width = 869,
+    height =940;
+
+var projection = d3.geo.mercator()
+  .center([133,-29])
+  .scale(1000)
+  .translate([width / 2, height / 2])
+  .precision(.1);
+
+var path = d3.geo.path()
+  .projection(projection)
+  //.pointRadius(2);
+
+var svg = d3.select("#map").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var g = svg.append("g");
+
+var electorates = new Array
+<% @electorates.each do |key,value| %>
+  var currentObject = {
+    "name" : "<%= key %>",
+    "twoCandidates" : new Array,
+    "twoPartys" : new Array,
+    "twoVotes" : new Array,
+    "allCandidates" : new Array,
+    "allPartys" : new Array,
+    "allVotes" : new Array,
+    "allHistoricVotes" : new Array
+  };
+  
+  <% if @electorates[key].nil? %>
+    <% next %>
+  <% end %>
+  <% @electorates[key][0].each do |name| %>
+    currentObject.twoCandidates.push("<%= name %>");
+  <% end %>
+  <% @electorates[key][1].each do |party| %>
+    currentObject.twoPartys.push("<%= party %>");
+  <% end %>
+  <% @electorates[key][2].each do |votes| %>
+    currentObject.twoVotes.push("<%= votes %>");
+  <% end %>
+  <% @electorates[key][3].each do |otherNames| %>
+    currentObject.allCandidates.push("<%= otherNames %>");
+  <% end %>
+  <% @electorates[key][4].each do |otherPartys| %>
+    currentObject.allPartys.push("<%= otherPartys %>");
+  <% end %>
+  <% @electorates[key][5].each do |otherVotes| %>
+    currentObject.allVotes.push("<%= otherVotes %>");
+  <% end %>
+  <% @electorates[key][6].each do |historicVotes| %>
+    currentObject.allHistoricVotes.push("<%= historicVotes %>");
+  <% end %>
+  electorates.push(currentObject);
+<% end %>
+
+function getElectorate(electorate) {
+  electorate = electorate.replace(/[^a-zA-Z ]/,"");
+  for (var i = 0; i < electorates.length; i++) {
+    if (electorates[i].name.toUpperCase() == electorate.toUpperCase()) {
+      return electorates[i];
+    }
+  }
+  return "Couldn't find electorate";
+}
+
+function getColor(parties, votes) {
+  var maxVotes = 0;
+  var currentParty = "";
+  for (var i = 0; i < votes.length; i++) {
+    //console.log("maxVotes = " + maxVotes + " party = " + parties[i] + " votes = " + votes[i]);
+    if (parseInt(votes[i]) > parseInt(maxVotes)) {
+      maxVotes = votes[i];
+      currentParty = parties[i];
+    }
+  }
+  return getPartyAffiliationColor(currentParty);
+}
+
+function getWinner(parties, votes) {
+  var maxVotes = 0;
+  var currentIndex = 0;
+  for (var i = 0; i < votes.length; i++) {
+    if (parseInt(maxVotes) < parseInt(votes[i])) {
+      maxVotes = votes[i];
+      currentIndex = i;
+    }
+  }
+  return currentIndex;
+}
+
+function updateGraph(electorateCandidates, electoratePartys, electorateVotes) {
+  var scaleY = d3.scale.linear()
+    .domain([0,getMax(electorateVotes)])
+    .range([0,441]);
+  var scaleX = d3.scale.linear()
+    .domain([0,electorateCandidates.length])
+    .range([20,410]);
+  
+  d3.select("#mapPopupPage3")
+  .select("#graphPopup")
+  .selectAll("rect")
+  .remove();
+  
+  d3.select("#mapPopupPage3")
+  .select("#graphPopup")
+  .selectAll("rect")
+  .data(electorateVotes)
+  .enter()
+  .append("rect")
+  .attr("x",function(d,i) {
+    return scaleX(i);
+  })
+  .attr("y",function(d) {
+    return 441 - scaleY(d);
+  })
+  .attr("width",390 / electorateCandidates.length)
+  .attr("height",function(d) {
+    return scaleY(d);
+  })
+  .attr("fill",function(d,i) {
+    return getPartyColor(electoratePartys[i]);
+  })
+  .attr("stroke","#000000")
+  .on("mouseover",function(d,i) {
+    d3.select("#mapPopupPage3")
+    .select("#infoBox")
+    .text(electorateCandidates[i] + "(" + electoratePartys[i] + "): " + electorateVotes[i]);
+  });
+}
+
+var currentGraphData;
+var isElectorate = false;
+d3.json("assets/aus.json", function(error, aus) {
+    g.selectAll("path")
+    .data(topojson.object(aus, aus.objects.subunits).geometries)
+    .enter()
+    .append("path")
+    .attr("class", function(d) { return "subunit " + d.id; })
+    .attr("d", path)
+    .style("fill", function(d) {
+         //console.log("ID = " + d.id);
+          var currentElectorate = getElectorate(d.id);
+          return getColor(currentElectorate.twoPartys, currentElectorate.twoVotes);
+    })
+    .on("click",function(d,i) {
+      if (!d3.event.defaultPrevented) {
+        var mapPosition = d3.select("#map")[0][0].getBoundingClientRect();
+        var cursorPosition = d3.mouse(this);
+        var testBoundingBox = this.getBoundingClientRect();
+        
+        var currentElectorate = getElectorate(d.id);
+        var winningCandidateIndex = getWinner(currentElectorate.twoCandidates, currentElectorate.twoVotes);
+        
+        updatePopupPosition("#mapPopup",(testBoundingBox.left+testBoundingBox.right) / 2 - mapPosition.left,(testBoundingBox.top + testBoundingBox.bottom) / 2 - mapPosition.top);
+        updatePopupHeading("#mapPopup",currentElectorate.name);
+        
+        d3.select("#mapPopupPage1")
+        .select("#subHeading")
+        .text("Current Projected Winner: " + currentElectorate.twoCandidates[winningCandidateIndex] + ", " + currentElectorate.twoPartys[winningCandidateIndex]);
+        
+        d3.select("#mapPopupPage1")
+        .select("#field1Title")
+        .text(currentElectorate.twoPartys[0]);
+        
+        d3.select("#mapPopupPage1")
+        .select("#field1")
+        .text(currentElectorate.twoCandidates[0] + ": " + currentElectorate.twoVotes[0]);
+        
+        d3.select("#mapPopupPage1")
+        .select("#field2Title")
+        .text(currentElectorate.twoPartys[1]);
+        
+        d3.select("#mapPopupPage1")
+        .select("#field2")
+        .text(currentElectorate.twoCandidates[1] + ": " + currentElectorate.twoVotes[1]);
+        
+        d3.select("#mapPopupPage2")
+        .selectAll("p")
+        .remove();
+        
+        d3.select("#mapPopupPage2")
+        .selectAll("p")
+        .data(currentElectorate.allPartys)
+        .enter()
+        .append("p")
+        .text(function(d,i) {
+          return currentElectorate.allPartys[i] + ": " + currentElectorate.allCandidates[i] + " " + currentElectorate.allVotes[i];
+        });
+        
+        openPopup("#mapPopup");
+        
+        currentGraphData = currentElectorate;
+        
+      }
+    });
+    d3.selectAll("input").on("change", change);
+    function change(){
+      if(this.value == "Past"){
+        g.selectAll("path").data(topojson.object(aus, aus.objects.subunits).geometries).transition().duration(1000).style("fill", function(d) {
+          var currentElectorate = getElectorate(d.id);
+          return getColor(currentElectorate.allPartys, currentElectorate.allHistoricVotes);
+        });
+      } else {
+        g.selectAll("path").data(topojson.object(aus, aus.objects.subunits).geometries).transition().duration(1000).style("fill", function(d) {
+          var currentElectorate = getElectorate(d.id);
+          return getColor(currentElectorate.twoPartys, currentElectorate.twoVotes);
+        });
+      }
+    }
+});
+
+function currentGraphView() {
+  updateGraph(currentGraphData.allCandidates,currentGraphData.allPartys,currentGraphData.allVotes);
+}
+
+function historicGraphView() {
+  updateGraph(currentGraphData.allCandidates,currentGraphData.allPartys,currentGraphData.allHistoricVotes);
+}
+
+var zoom = d3.behavior.zoom()
+    .on("zoom",function() {
+        g.transition()
+        .duration(600)
+        .ease("cubic-in-out")
+        .attr("transform","translate("+ d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+        g.selectAll("path").attr("d", path.projection(projection));
+        d3.event.sourceEvent.stopPropagation();
+        closePopup("#mapPopup");
+    });
+
+
+  
+svg.call(zoom)
+
+</script>
